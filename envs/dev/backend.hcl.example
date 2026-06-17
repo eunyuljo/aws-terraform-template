@@ -1,0 +1,5 @@
+bucket       = "<your-state-bucket-name>"
+key          = "aws-terraform-template/dev/terraform.tfstate"
+region       = "ap-northeast-2"
+encrypt      = true
+use_lockfile = true

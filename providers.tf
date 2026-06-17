@@ -7,15 +7,10 @@ provider "aws" {
 }
 
 # Terraform backend configuration
-# Option 1: S3 backend (default)
+# Backend 상세 설정은 envs/<env>/backend.hcl 에서 주입:
+#   terraform init -backend-config=envs/dev/backend.hcl
 terraform {
-  backend "s3" {
-    bucket       = "my-terraform-state-bucket"
-    key          = "path/to/my/terraform.tfstate"
-    region       = "us-east-1"
-    encrypt      = true
-    use_lockfile = true
-  }
+  backend "s3" {}
 }
 
 # Option 2: Terraform Cloud/Enterprise (alternative)

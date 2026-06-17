@@ -253,17 +253,29 @@ module "local_example" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_random"></a> [random](#provider\_random) | >=3.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >=5.0.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_alb"></a> [alb](#module\_alb) | terraform-aws-modules/alb/aws | ~> 10.0 |
+| <a name="module_alb_sg"></a> [alb\_sg](#module\_alb\_sg) | terraform-aws-modules/security-group/aws | ~> 6.0 |
+| <a name="module_ec2"></a> [ec2](#module\_ec2) | terraform-aws-modules/ec2-instance/aws | ~> 6.0 |
+| <a name="module_ec2_sg"></a> [ec2\_sg](#module\_ec2\_sg) | terraform-aws-modules/security-group/aws | ~> 6.0 |
+| <a name="module_rds"></a> [rds](#module\_rds) | terraform-aws-modules/rds/aws | ~> 7.0 |
+| <a name="module_rds_sg"></a> [rds\_sg](#module\_rds\_sg) | terraform-aws-modules/security-group/aws | ~> 6.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 6.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [random_pet.main](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
+| [aws_iam_instance_profile.ec2_ssm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
+| [aws_iam_role.ec2_ssm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.ec2_ssm_core](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_ssm_parameter.al2023_ami](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
@@ -276,8 +288,11 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_hello_world"></a> [hello\_world](#output\_hello\_world) | Test output |
-| <a name="output_random_pet"></a> [random\_pet](#output\_random\_pet) | Dummy output |
+| <a name="output_alb_dns_name"></a> [alb\_dns\_name](#output\_alb\_dns\_name) | ALB DNS name - 브라우저로 접속 가능한 주소 |
+| <a name="output_ec2_id"></a> [ec2\_id](#output\_ec2\_id) | EC2 instance ID - SSM Session Manager 접속 시 사용 |
+| <a name="output_rds_endpoint"></a> [rds\_endpoint](#output\_rds\_endpoint) | RDS endpoint - EC2에서 mysql 클라이언트로 접속 |
+| <a name="output_rds_master_secret_arn"></a> [rds\_master\_secret\_arn](#output\_rds\_master\_secret\_arn) | RDS master password가 저장된 Secrets Manager ARN |
+| <a name="output_ssm_connect_command"></a> [ssm\_connect\_command](#output\_ssm\_connect\_command) | EC2 SSM 접속 명령 |
 <!-- END_TF_DOCS -->
 
 ## Security
